@@ -19,6 +19,9 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Set executable permissions for bin scripts
+        run: chmod +x bin/*
+
       - name: Scan for security vulnerabilities in JavaScript dependencies
         run: bin/importmap audit
 
@@ -33,6 +36,9 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+
+      - name: Set executable permissions for bin scripts
+        run: chmod +x bin/*
 
       - name: Lint code for consistent style
         run: bin/rubocop -f github
@@ -58,6 +64,9 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+
+      - name: Set executable permissions for bin scripts
+        run: chmod +x bin/*
 
       - name: Run tests
         env:
