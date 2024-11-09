@@ -6,6 +6,25 @@ on:
     branches: [ main ]
 
 jobs:
+  brakeman:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Run Brakeman
+        run: bundle exec brakeman --no-pager
   scan_ruby:
     runs-on: ubuntu-latest
 
